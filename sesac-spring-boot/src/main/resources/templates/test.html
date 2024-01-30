@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<!--test.html 파일에서 thymeleaf템플릿을 사용하겠다를 선언해줘야 타임리프문법을 사용할 수 있음-->
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+
+<h1 >복습</h1>
+<p th:text="${name}"></p>
+<p >안녕</p>
+<p th:utext="${name2}"></p>
+<!--utext는 값 앞에 있는 태그를 읽어서 반환-->
+
+<hr />
+
+<h3> th : value = 기본값 쓸 때 </h3>
+<input type="text" th:value="${name}" />
+<button th:value="${name}">따봉</button>
+
+<hr />
+<h3> th:with = 템플릿 내에서 변수를 지정해서 사용할 때 사용 </h3>
+<div th:with="person1=${name}" th:text="${person1}"></div>
+<hr />
+
+<h3>th:if = 조건문(else if는 없음!)</h3>
+<p th:if="${name}=='박박이'" th:text="${changeName}"></p>
+<p th:unless="${name}=='박박이'" th:text="'바뀌었니??'"></p>
+<hr/>
+
+<h3> th: each = 반복문!!</h3>
+<ul>
+    <li th:each="person:${personperson}">
+        <span th:text="${person}"></span>
+    </li>
+</ul>
+
+<hr />
+<!--<h1>실습 혼자</h1>-->
+
+<!--<div th:if="${age9} < 20" th:text="${age9}+'세는 미성년자로 시청불가다'" style="color:red"></div>-->
+<!--<div th:unless="${age9} < 20 " th:text="${age9}+'세는 성인입니다.'" style="color:blue"></div>-->
+
+<!--<div th:if="${age99}<20" th:text="${age99}+'세는 미성년자다~'" style="color:red"></div>-->
+<!--<div th:unless="${age99}<20" th:text="${age99}+'세는 성인이다. 철들어라'" style="color:blue"></div>-->
+
+<!--<hr />-->
+<h1>실습2 혼자</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each=" one: ${person}">
+            <td th:text="${one.name}"></td>
+            <td th:text="${one.age}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
