@@ -2,12 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>API - Post 실습</title>
+    <title>API - 동적폼전송 실습</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- axios 라이브러리 추가 -->
 </head>
 <body>
 <!--<p th:text="'내 이름은 ' + ${name}">.</p>-->
 
-<form action="mvc-post" method="post">
+<form action="/axios/vo" method="post" id="form1" style="margin-right: 20px;">
     이름 <input type="text" name="name" />
     성별
     <select name="gender">
@@ -16,15 +17,13 @@
     </select>
     생년월일
     <select name="year">
-        <option value="2024">2024년</option>
-
+        <option th:each="year : ${#numbers.sequence(1990, 2024)}" th:value="${year}" th:text="${year}+'년'"></option>
     </select>
     <select name="month">
-        <option value="1">1월</option>
-
+        <option th:each="month : ${#numbers.sequence(1, 12)}" th:value="${month}" th:text="${month}+'월'"></option>
     </select>
     <select name="day">
-        <option value="1">1일</option>
+        <option th:each="day : ${#numbers.sequence(1, 31)}" th:value="${day}" th:text="${day}+'일'"></option>
     </select>
 
     관심사
@@ -32,9 +31,18 @@
     <input type="checkbox" name="interest" value="패션">패션
     <input type="checkbox" name="interest" value="음식">음식
 
-    <button type="submit">회원가입</button>
-
-
+    <button type="button" onclick="axiosvo()">회원가입</button>
 </form>
+
+<script>
+    function axiosvo(){
+        var form = document.getElementById('form1');
+        axios.post(`/axios/vo`, {name: form.name.value})
+        .then((res)=>{
+            console.log(res);
+            console.log('axiosvo : ',res.data);
+        });
+    }
+</script>
 </body>
 </html>

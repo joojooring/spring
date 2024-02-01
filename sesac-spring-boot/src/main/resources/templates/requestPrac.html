@@ -107,7 +107,7 @@
 <hr>
 <h2>VO 이용하기</h2>
 <div style="display: flex, flex-direction:column" >
-    <form action="/vo/response1" method="get" style="margin-right: 20px;">
+    <form action="/vo/prac1" method="get" style="margin-right: 20px;">
         <h3>Get - VO</h3>
         이름 : <input type="text" name="name">
         <br>
@@ -115,7 +115,7 @@
         <br>
         <button type="submit">GET 전송</button>
     </form>
-    <form action="/vo/response2" method="post" style="margin-right: 20px;">
+    <form action="/vo/prac2" method="post" style="margin-right: 20px;">
         <h3>Post - VO</h3>
         이름 : <input type="text" name="name">
         <br>
@@ -123,7 +123,7 @@
         <br>
         <button type="submit">Post 전송 ( RequestBody x )</button>
     </form>
-    <form action="/vo/response3" method="post" style="margin-right: 20px;">
+    <form action="/vo/prac3" method="post" style="margin-right: 20px;">
         <h3>Post - VO</h3>
         이름 : <input type="text" name="name">
         <br>
@@ -136,7 +136,7 @@
 <script>
     function dtoResponse1() {
         var form = document.getElementById('form_dto1');
-        axios.get(`/axios/response1?name=${form.name.value}&age=${form.age.value}`)
+        axios.get(`/axios/prac1?name=${form.name.value}&age=${form.age.value}`)
         .then((res)=>{
             console.log( res );
             console.log( 'dtoResponse1 : ', res.data );
@@ -144,7 +144,7 @@
     }
     function dtoResponse2() {
         var form = document.getElementById('form_dto1');
-        axios.get(`/axios/response2?name=${form.name.value}&age=${form.age.value}`)
+        axios.get(`/axios/prac2?name=${form.name.value}&age=${form.age.value}`)
         .then((res)=>{
             console.log( res );
             console.log( 'dtoResponse2 : ', res.data );
@@ -152,7 +152,7 @@
     }
     function dtoResponse3() {
         var form = document.getElementById('form_dto2');
-        axios.post(`/axios/response3`, {name: form.name.value, age: form.age.value})
+        axios.post(`/axios/prac3`, {name: form.name.value, age: form.age.value})
         .then((res)=>{
             console.log( res );
             console.log( 'dtoResponse3 : ', res.data );
@@ -160,7 +160,7 @@
     }
     function dtoResponse4() {
         var form = document.getElementById('form_dto2');
-        axios.post(`/axios/response4`, {name: form.name.value, age: form.age.value})
+        axios.post(`/axios/prac4`, {name: form.name.value, age: form.age.value})
         .then((res)=>{
             console.log( res );
             console.log( 'dtoResponse4 : ', res.data );
@@ -168,7 +168,7 @@
     }
     function dtoResponse5() {
         var form = document.getElementById('form_dto2');
-        axios.post(`/axios/response5`, {name: form.name.value, age: form.age.value})
+        axios.post(`/axios/prac5`, {name: form.name.value, age: form.age.value})
         .then((res)=>{
             console.log( res );
             console.log( 'dtoResponse5 : ', res.data );
@@ -179,8 +179,8 @@
 <br>
 <hr>
 <h2>DTO 이용하기 - axios</h2>
-<div style="display: flex">
-    <form action="/axios/response1" method="get" style="margin-right: 20px;" id="form_dto1">
+    <div style="display: flex, flex-direction:column" >
+    <form action="/axios/prac1" method="get" style="margin-right: 20px;" id="form_dto1">
         이름 : <input type="text" name="name">
         <br>
         나이 : <input type="text" name="age">
@@ -188,7 +188,7 @@
         <button type="button" onclick="dtoResponse1();">GET ( 일반 ) - axios</button>
         <button type="button" onclick="dtoResponse2();">Get ( DTO ) - axios</button>
     </form>
-    <form action="/axios/response3" method="post" style="margin-right: 20px;" id="form_dto2">
+    <form action="/axios/prac2" method="post" style="margin-right: 20px;" id="form_dto2">
         <h3>Post ( 일반 ) - axios</h3>
         이름 : <input type="text" name="name">
         <br>
@@ -247,7 +247,7 @@
 <br>
 <hr>
 <h2>VO 이용하기 - axios</h2>
-<div style="display: flex">
+    <div style="display: flex, flex-direction:column" >
     <form id="form_vo1" style="margin-right: 20px;">
         <h3>Get ( 일반 ) - axios</h3>
         이름 : <input type="text" name="name">
