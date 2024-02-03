@@ -1,4 +1,4 @@
-package sesac.sesacspringboot.controller;
+package sesac.sesacspringboot.controller.apiController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package sesac.sesacspringboot.controller;
+package sesac.sesacspringboot.controller.apiController;
 
 import lombok.Getter;
 import lombok.Setter;

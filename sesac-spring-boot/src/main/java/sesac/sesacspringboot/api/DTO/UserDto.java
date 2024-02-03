@@ -1,12 +1,12 @@
-package sesac.sesacspringboot.DTO;
+package sesac.sesacspringboot.api.DTO;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class PracOneDTO {
+public class UserDto{
     private String name;
-    private int age;
+    private String age;
 
 }

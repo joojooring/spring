@@ -1,13 +1,11 @@
-package sesac.sesacspringboot.controller;
+package sesac.sesacspringboot.controller.apiController;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sesac.sesacspringboot.DTO.PracOneDTO;
-import sesac.sesacspringboot.DTO.UserDto;
+import sesac.sesacspringboot.api.DTO.PracOneDTO;
 
 //@ResponseBody
 //즉, @ResponseBody 어노테이션을 사용하면 해당 메서드의 반환 값은 View가 아닌

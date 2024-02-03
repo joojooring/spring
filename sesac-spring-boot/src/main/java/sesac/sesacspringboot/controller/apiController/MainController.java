@@ -1,12 +1,10 @@
-package sesac.sesacspringboot.controller;
+package sesac.sesacspringboot.controller.apiController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import sesac.sesacspringboot.DTO.UserDto;
-import sesac.sesacspringboot.vo.UserVO;
-
-import javax.swing.plaf.PanelUI;
+import sesac.sesacspringboot.api.DTO.UserDto;
+import sesac.sesacspringboot.api.vo.UserVO;
 
 
 @Controller

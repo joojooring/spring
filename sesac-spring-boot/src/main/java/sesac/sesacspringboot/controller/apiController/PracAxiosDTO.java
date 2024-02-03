@@ -1,11 +1,8 @@
-package sesac.sesacspringboot.controller;
+package sesac.sesacspringboot.controller.apiController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import sesac.sesacspringboot.DTO.PracOneDTO;
-import sesac.sesacspringboot.vo.PracOneVO;
-
-import javax.swing.plaf.PanelUI;
+import sesac.sesacspringboot.api.DTO.PracOneDTO;
 
 @Controller
 public class PracAxiosDTO {
