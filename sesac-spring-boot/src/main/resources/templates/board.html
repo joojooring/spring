@@ -14,7 +14,7 @@
         });
     }
 
-    function createBoard() {
+    function writeBoard() {
         // 제목, 내용, 작성자를 입력하고 "작성"버튼 눌렀을 때
         var form = document.getElementById('form_board');
         var data = {
@@ -23,7 +23,8 @@
             writer: form.writer.value,
         };
 
-        axios.post(`/board`, data).then((res) => {
+        axios.post(`/board/post`, data).then((res) => {
+            console.log(res.data);
             location.reload();
         });
     }
@@ -57,7 +58,7 @@
   <input type="text" name="title" placeholder="제목" />
   <input type="text" name="content" placeholder="내용" />
   <input type="text" name="writer" placeholder="작성자" />
-  <button type="button" onclick="createBoard()">
+  <button type="button" onclick="writeBoard()">
     작성
   </button>
 </form>
@@ -67,25 +68,20 @@
     <th>ID</th>
     <th>제목</th>
     <th>작성자</th>
-<!--    <th>작성일</th>-->
+    <th>작성일</th>
     <th>수정</th>
     <th>삭제</th>
   </tr>
   <!--    타임리프 문법 이용해서 게시판 글 보여주기 -->
-  <tbody>
-  <tr th:each="board : ${boards}">
-    <td th:text="${board.id}"></td>
-    <td th:text="${board.title}"></td>
-    <td th:text="${board.writer}"></td>
-<!--    <td th:text="${board.createdAt}"></td>-->
-    <td>
-      <button type="button" onclick="editBoard(${board.id})">수정</button>
-    </td>
-    <td>
-      <button type="button" onclick="deleteBoard(${board.id})">삭제</button>
-    </td>
+  <tr th:each="post:${posts}">
+    <td th:text="${post.id}">.</td>
+    <td th:text="${post.id}">.</td>
+    <td th:text="${post.title}">.</td>
+    <td th:text="${post.writer}">.</td>
+    <td th:text="${post.registered}">.</td>
+    <td th:onclick="editBoard([[${post.id}]])">수정</td>
+    <td th:onclick="deleteBoard([[${post.id}]])">삭제</td>
   </tr>
-  </tbody>
 </table>
 </body>
 </html>

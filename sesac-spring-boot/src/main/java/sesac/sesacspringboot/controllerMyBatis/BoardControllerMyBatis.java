@@ -2,7 +2,9 @@ package sesac.sesacspringboot.controllerMyBatis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import sesac.sesacspringboot.domain.Board;
 import sesac.sesacspringboot.dto.BoardDTO;
 import sesac.sesacspringboot.service.BoardService;
 import sesac.sesacspringboot.service.UserService;
@@ -11,59 +13,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-
-//@RequestMapping("/board")
-//@RestController
+@RequestMapping("/board")
 public class BoardControllerMyBatis {
-
-
-    @GetMapping("/board")
-    public String getMain(){ return "board"; }
     @Autowired
     BoardService boardService;
 
-
-//    @GetMapping("/board/search")
-//    public int searchBoard(@RequestParam("word") String word) {
-//        // 검색어가 있으면 일치하는 제목의 개수를 가져오고
-//        // 검색어가 없으면 전체 게시글이 몇 개인지 가져온다.
-//        int result;
-//        if (word != null && !word.isEmpty()) {
-//            result = boardService.getMatchingTitleCount(word);
-//        } else {
-//            result = boardService.getTotalBoardCount();
-//        }
-//        return result;
-//    }
-//@PostMapping("/board/board")
-//public List<BoardDTO> createBoard() {
-//    // POST 요청 처리 로직 작성
-//    List<BoardDTO> result = BoardService.createBoard();
-//    return result;
-//}
+//    첫 화면 랜더 & 조회
+    @GetMapping("")
+    public String getBoard(Model model){
+        List<Board> posts = boardService.getBoard();
+        model.addAttribute("posts",posts);
+        return "board"; }
 
 
-//    @PostMapping("/board")
-//    public List<BoardDTO> createBoard(@RequestBody BoardDTO boardDTO) {
-//
-//
-//        // POST 요청 처리 로직 작성
-//        boardService.createBoard(title, content, writer);
-//        List<BoardDTO> result = boardService.boardAll();
-//        return result;
-//    }
 
-//    @PostMapping("/board")
-//    public String createBoard(@RequestBody BoardDTO boardDTO) {
-//        return boardDTO.getTitle() + boardDTO.getContent() + boardDTO.getWriter();
-//    }
-@PostMapping("/board")
-public List<BoardDTO> createBoard(@RequestBody BoardDTO boardDTO) {
-    List<BoardDTO> result = new ArrayList<>();
-    result.add(boardDTO);
-    return result;
+//    create : 글 작성
+//    POST는 Responsebody, RequestBody로 요청 이때 객체로 받을 수 있음
+@PostMapping("/post")
+@ResponseBody
+public String createPost(@RequestBody BoardDTO boardDTO) {
+    boardService.createPost(boardDTO.getTitle(), boardDTO.getContent(), boardDTO.getWriter());
+    return "작성 성공";
 }
+    // read : 검색어와 일치하는 제목의 게시글 조회
+    @GetMapping("/search")
+    @ResponseBody
+    public int getTitleBoard(@RequestParam String word) {
+        List<Board> result = boardService.getTitleBoard(word);
+        return result.size();
+    }
 
+    // update : 게시글 수정
+    @PatchMapping("")
+    public void updatePost(@RequestBody Board board) {
+        // @RequestBody는 객체로 받아야 됨, 필드로 받을시 안됨
+        boardService.updatePost(board.getId(), board.getTitle(), board.getContent(), board.getWriter());
+    }
+
+    // delete : 게시글 삭제
+    @DeleteMapping("")
+    public void deletePost(@RequestParam int id) {
+        boardService.deletePost(id);
+    }
 
 
 }

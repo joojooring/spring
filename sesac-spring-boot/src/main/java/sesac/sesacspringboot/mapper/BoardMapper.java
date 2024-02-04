@@ -1,20 +1,29 @@
 package sesac.sesacspringboot.mapper;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.*;
 import sesac.sesacspringboot.domain.Board;
 
 import java.util.List;
 
 @Mapper
-
 public interface BoardMapper {
+    // create
+    @Insert("insert into board(title, content, writer) values(#{title}, #{content}, #{writer})")
+    void createPost(String title, String content, String writer);
+    // void createPost(Board board);
 
-    List<Board> boardAll();
+    // read
+    @Select("select * from board")
+    List<Board> getBoard();
 
-//    @Insert("insert into user(title, content, writer) values(#{title}, #{content}, #{writer})")
-//    void createBoard( String title, String content, String writer);
-//    Board getUserById(int id);
+    @Select("select * from board where title like '%${word}%'")
+    List<Board> getTitleBoard(String word);
 
-    void createBoard(Board board);
+    // update
+    @Update("update board set title=#{title}, content=#{content}, writer=#{writer} where id = #{id}")
+    void updatePost(int id, String title, String content, String writer);
+
+    // delete
+    @Delete("delete from board where id = #{id}")
+    void deletePost(int id);
 }
