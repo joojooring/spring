@@ -23,7 +23,8 @@ public class BoardControllerMyBatis {
     public String getBoard(Model model){
         List<Board> posts = boardService.getBoard();
         model.addAttribute("posts",posts);
-        return "board"; }
+        return "board";
+    }
 
 
 
