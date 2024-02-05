@@ -29,13 +29,14 @@ public class BoardControllerMyBatis {
 
 //    create : 글 작성
 //    POST는 Responsebody, RequestBody로 요청 이때 객체로 받을 수 있음
-@PostMapping("/post")
-@ResponseBody
-public String createPost(@RequestBody BoardDTO boardDTO) {
-    boardService.createPost(boardDTO.getTitle(), boardDTO.getContent(), boardDTO.getWriter());
-    return "작성 성공";
-}
-    // read : 검색어와 일치하는 제목의 게시글 조회
+    @PostMapping("/post")
+    @ResponseBody
+    public String createPost(@RequestBody BoardDTO boardDTO) {
+        boardService.createPost(boardDTO.getTitle(), boardDTO.getContent(), boardDTO.getWriter());
+        return "작성 성공";
+    }
+
+// read : 검색어와 일치하는 제목의 게시글 조회
     @GetMapping("/search")
     @ResponseBody
     public int getTitleBoard(@RequestParam String word) {
@@ -43,14 +44,14 @@ public String createPost(@RequestBody BoardDTO boardDTO) {
         return result.size();
     }
 
-    // update : 게시글 수정
+// update : 게시글 수정
     @PatchMapping("")
     public void updatePost(@RequestBody Board board) {
         // @RequestBody는 객체로 받아야 됨, 필드로 받을시 안됨
         boardService.updatePost(board.getId(), board.getTitle(), board.getContent(), board.getWriter());
     }
 
-    // delete : 게시글 삭제
+// delete : 게시글 삭제
     @DeleteMapping("")
     public void deletePost(@RequestParam int id) {
         boardService.deletePost(id);
