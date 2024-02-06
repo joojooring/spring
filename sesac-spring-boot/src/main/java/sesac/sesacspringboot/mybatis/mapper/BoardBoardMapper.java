@@ -1,7 +1,7 @@
-package sesac.sesacspringboot.mapper;
+package sesac.sesacspringboot.mybatis.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import sesac.sesacspringboot.domain.BoardDomain;
+import sesac.sesacspringboot.mybatis.domain.BoardDomain;
 
 import java.util.List;
 @Mapper
@@ -16,5 +16,5 @@ public interface BoardBoardMapper {
 
     void deleteBoard(int id); // 삭제 (delete)
 
-    List<BoardDomain> searchBoard(String word); // 이 내용은 xml 파일에 sql문 작성되어야 됨
+    List<BoardDomain> searchBoard(String word); // 단어 조회 : 이 내용은 xml 파일에 sql문 작성되어야 됨
 }

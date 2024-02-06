@@ -1,4 +1,4 @@
-package sesac.sesacspringboot.domain;
+package sesac.sesacspringboot.mybatis.domain;
 
 import lombok.Getter;
 import lombok.Setter;

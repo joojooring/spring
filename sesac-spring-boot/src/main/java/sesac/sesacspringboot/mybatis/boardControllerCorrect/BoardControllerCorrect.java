@@ -1,11 +1,12 @@
-package sesac.sesacspringboot.boardControllerCorrect;
+package sesac.sesacspringboot.mybatis.boardControllerCorrect;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import sesac.sesacspringboot.dto.BoardBoardDTO;
-import sesac.sesacspringboot.service.BoardBoardService;
+import sesac.sesacspringboot.mybatis.dto.BoardBoardDTO;
+import sesac.sesacspringboot.mybatis.service.BoardBoardService;
+
 import java.util.List;
 @Controller
 @RequestMapping("/board/mybatis")

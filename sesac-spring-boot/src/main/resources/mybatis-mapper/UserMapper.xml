@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="sesac.sesacspringboot.mapper.UserMapper">
-    <select id="retrieveAll" resultType="sesac.sesacspringboot.domain.User">
+<mapper namespace="sesac.sesacspringboot.mybatis.mapper.UserMapper">
+    <select id="retrieveAll" resultType="sesac.sesacspringboot.mybatis.domain.User">
         SELECT user.* FROM user
     </select>
 
-    <update id="updateUser" parameterType="sesac.sesacspringboot.domain.User">
+    <update id="updateUser" parameterType="sesac.sesacspringboot.mybatis.domain.User">
         UPDATE user
         SET name = #{name}, nickname=#{nickname}
         WHERE id = #{id}

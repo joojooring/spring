@@ -1,15 +1,13 @@
-package sesac.sesacspringboot.controllerMyBatis;
+package sesac.sesacspringboot.mybatis.controllerMyBatis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import sesac.sesacspringboot.domain.Board;
-import sesac.sesacspringboot.dto.BoardDTO;
-import sesac.sesacspringboot.service.BoardService;
-import sesac.sesacspringboot.service.UserService;
+import sesac.sesacspringboot.mybatis.domain.Board;
+import sesac.sesacspringboot.mybatis.dto.BoardDTO;
+import sesac.sesacspringboot.mybatis.service.BoardService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller

@@ -1,12 +1,12 @@
-package sesac.sesacspringboot.controllerMyBatis;
+package sesac.sesacspringboot.mybatis.controllerMyBatis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import sesac.sesacspringboot.dto.UserDTO;
-import sesac.sesacspringboot.service.UserService;
+import sesac.sesacspringboot.mybatis.dto.UserDTO;
+import sesac.sesacspringboot.mybatis.service.UserService;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package sesac.sesacspringboot.mapper;
+package sesac.sesacspringboot.mybatis.mapper;
 
 import org.apache.ibatis.annotations.*;
-import sesac.sesacspringboot.domain.User;
+import sesac.sesacspringboot.mybatis.domain.User;
 
 import java.util.List;
 

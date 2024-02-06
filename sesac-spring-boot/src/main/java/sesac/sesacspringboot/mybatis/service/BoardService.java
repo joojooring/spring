@@ -1,7 +1,7 @@
-package sesac.sesacspringboot.service;
+package sesac.sesacspringboot.mybatis.service;
 
-import sesac.sesacspringboot.domain.Board;
-import sesac.sesacspringboot.mapper.BoardMapper;
+import sesac.sesacspringboot.mybatis.domain.Board;
+import sesac.sesacspringboot.mybatis.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
