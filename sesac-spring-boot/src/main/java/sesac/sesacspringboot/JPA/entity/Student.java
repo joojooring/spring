@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity //class Student() {} // 빈 생성자가 필수로 필요하다.
 @NoArgsConstructor // entity가 만들어주는 기본 생성자 : 기본 생성자의 접근 제어자가 불명확함
 @Getter
