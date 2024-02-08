@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import sesac.sesacspringboot.mybatis.dto.BoardBoardDTO;
+import sesac.sesacspringboot.mybatis.dto.BoardDTO;
 import sesac.sesacspringboot.mybatis.service.BoardBoardService;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class BoardControllerCorrect {
 //    1. 전체 조회
     @GetMapping ("")
     public String getBoardBoard(Model model){
-        List<BoardBoardDTO> result = boardBoardService.getBoardAll();
+        List<BoardDTO> result = boardBoardService.getBoardAll();
         model.addAttribute("list", result);
         return "boardboard";
     }
@@ -34,7 +34,7 @@ public class BoardControllerCorrect {
 //    2. 작성 (create) : axios(동적폼전송, post) = @RequestBody로 데이터 받을거임
     @PostMapping("") // /board/mybatis
     @ResponseBody // 응답을 보내주기 위해
-    public boolean insertBoard(@RequestBody BoardBoardDTO boardBoardDTO) {
+    public boolean insertBoard(@RequestBody BoardDTO boardBoardDTO) {
 
         boardBoardService.insertBoard(boardBoardDTO);
         return true;
@@ -44,7 +44,7 @@ public class BoardControllerCorrect {
     @ResponseBody // 응답 그대로 반환
 //    responseBody가 없으면
 //    템플릿 파일을 보여주는데 void라면 현재 template을 그대로 다시 보여줌
-    public void patchBoard(@RequestBody BoardBoardDTO boardBoardDTO){
+    public void patchBoard(@RequestBody BoardDTO boardBoardDTO){
         boardBoardService.patchBoard(boardBoardDTO);
 
     }

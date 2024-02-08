@@ -3,7 +3,7 @@ package sesac.sesacspringboot.mybatis.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sesac.sesacspringboot.mybatis.domain.BoardDomain;
-import sesac.sesacspringboot.mybatis.dto.BoardBoardDTO;
+import sesac.sesacspringboot.mybatis.dto.BoardDTO;
 import sesac.sesacspringboot.mybatis.mapper.BoardBoardMapper;
 
 import java.util.ArrayList;
@@ -13,12 +13,12 @@ public class BoardBoardService {
     @Autowired
     BoardBoardMapper boardBoardMapper;
 
-    public List<BoardBoardDTO> getBoardAll(){
+    public List<BoardDTO> getBoardAll(){
         List<BoardDomain> result =  boardBoardMapper.getBoardAll();
-        List<BoardBoardDTO> boards = new ArrayList<>();
+        List<BoardDTO> boards = new ArrayList<>();
 
         for(BoardDomain board : result){
-            BoardBoardDTO boardBoardDTO = new BoardBoardDTO();
+            BoardDTO boardBoardDTO = new BoardDTO();
             boardBoardDTO.setBoardID(board.getId());
             boardBoardDTO.setTitle(board.getTitle());
             boardBoardDTO.setContent(board.getContent());
@@ -31,7 +31,7 @@ public class BoardBoardService {
     }
 
 
-    public boolean insertBoard(BoardBoardDTO boardBoardDTO){
+    public boolean insertBoard(BoardDTO boardBoardDTO){
         BoardDomain boardDomain = new BoardDomain();
         boardDomain.setTitle(boardBoardDTO.getTitle());
         boardDomain.setContent(boardBoardDTO.getContent());
@@ -41,7 +41,7 @@ public class BoardBoardService {
         return true;
     }
 
-    public void patchBoard(BoardBoardDTO boardBoardDTO){
+    public void patchBoard(BoardDTO boardBoardDTO){
 //    board.getBoardID // title,content, wrtier
 
         BoardDomain boardDomain = new BoardDomain();

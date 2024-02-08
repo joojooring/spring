@@ -1,12 +1,11 @@
-package sesac.sesacspringboot.mybatis.dto;
+package sesac.sesacspringboot.jpaboard.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class BoardBoardDTO {
-
+public class BoardDTO {
     private int boardID;
     private String title, content, writer, registered;
     private int no;
