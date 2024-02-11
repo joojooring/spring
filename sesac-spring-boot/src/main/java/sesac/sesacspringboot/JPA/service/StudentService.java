@@ -84,8 +84,6 @@ public class StudentService {
 //        Student student = studentRepository.findById(id);
 //        return student.getName();
 
-
-
 //        id는 findByid 옵셔널로 받으면 되고
 //        List는 절대 null 아니 아니니까 옵셔널 쓸 필요가 없음
 
