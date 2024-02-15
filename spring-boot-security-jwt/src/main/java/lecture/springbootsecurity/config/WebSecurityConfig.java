@@ -1,5 +1,6 @@
 package lecture.springbootsecurity.config;
 
+import lecture.springbootsecurity.security.JwtAuthFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,8 +8,10 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -21,6 +24,8 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class WebSecurityConfig {
 
+    @Autowired
+    JwtAuthFilter jwtAuthFilter;
 //    @Autowired
 //    CustomAuthFilter customAuthFilter;
 //    메소드 생성 : SecurityFilterChain
@@ -35,12 +40,17 @@ public class WebSecurityConfig {
 
     @Bean // spring container에서 관리할 숫 있게끔
     public SecurityFilterChain filterChain(HttpSecurity http) throws  Exception{
+
+
 //        스프링 시큐리티 적용하면, 기본적으로 모든 경로에 인증이 있어야 접근이 가능해짐
 //        특정 경로에서 인증 없이 접근 할 수 있도록 설정
 
         http
                 .cors(Customizer.withDefaults())
                 .csrf(CsrfConfigurer::disable) // post,put 요청을 허용함 //2.0버전에선 .disabl로 씀
+                .sessionManagement(sessionM -> sessionM
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // session을 사용하지 않겠다는 설정(jwt 토큰 쓸거니까)
+//
                 .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/auth/**") // 이주소에는 인가가 필요없다.
 //              .requestMatchers("/admin/**").hasRole("Admin")
@@ -55,7 +65,7 @@ public class WebSecurityConfig {
 
         );
 //        UsernamePasswordAuthenticationFilter 다음에 customAuthFilter를 작성하겠다.
-
+        http.addFilterAfter(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

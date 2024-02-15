@@ -4,6 +4,7 @@ package lecture.springbootsecurity.controller;
 import jakarta.servlet.http.HttpSession;
 import lecture.springbootsecurity.dto.UserDTO;
 import lecture.springbootsecurity.entity.UserEntity;
+import lecture.springbootsecurity.security.TokenProvider;
 import lecture.springbootsecurity.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class UserController {
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    TokenProvider tokenProvider;
 
     @GetMapping("")
     public String getAuth(){
@@ -63,21 +67,18 @@ public class UserController {
             throw new RuntimeException("login failed");
         }
 
+        String token = tokenProvider.createToken(user);
+
+
 //        응답 객체를 만들기위해서 DTO객체를 만든거임
         UserDTO responseUserDTO = UserDTO.builder()
                 .email(user.getEmail())
                 .username(user.getUsername())
                 .id(user.getId())
+                .token(token)
                 .build();
 
 
-//        세션은 return 직전에 해주면 됨
-//            log.info()
-//            log.error()
-//            log.warn()
-//          변수 넣는 법 :  문자열안에 {} 넣고 ,콤마 직고
-            log.warn("session id {}", session.getId());
-            session.setAttribute("userId",user.getId());
         return ResponseEntity.ok().body(responseUserDTO);
         } catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());

@@ -8,12 +8,14 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import lecture.springbootsecurity.config.jwt.JwtProperties;
 import lecture.springbootsecurity.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 // => 이 메소드들을 나중에 필요시에 사용하기 위해
+@Component
 public class TokenProvider {
     @Autowired
     JwtProperties jwtProperties;

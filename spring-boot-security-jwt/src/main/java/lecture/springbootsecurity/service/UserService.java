@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service // service 라는 어노테이션 자체가 @component 어노테이션을 상속받기 때문에 다른데서 autowired로 주입받을 때 사용할 수 있음
 public class UserService {
     @Autowired
     UserRepository userRepository;
