@@ -43,6 +43,12 @@ public class WebSecurityConfig {
         http
                 .cors(Customizer.withDefaults())
                 .csrf(CsrfConfigurer::disable) // post,put 요청을 허용함 //2.0버전에선 .disabl로 씀
+                .logout(auth -> auth
+                        .logoutUrl("/auth/logout")
+                        .logoutSuccessHandler((request, response, authentication) -> {
+                            response.setStatus(200);
+                        })
+                )
                 .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/auth/**") // 이주소에는 인가가 필요없다.
 //              .requestMatchers("/admin/**").hasRole("Admin")

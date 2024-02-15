@@ -4,6 +4,15 @@ package lecture.springbootsecurity.security;
 // -- 다음 요청에서 로그인 여부 판단하고 싶을 때 (클라이언트가 요청을 보낼 때): FILTER에서 작성  -> session에 userId가 있는지 없는지에 따라
 // ---- userID가 존재하면, 로그인을 한 사람 / userID가 존재하지 않으면, 로그인을 하지 않은 사람
 
+// -- 로그아웃 시에 세션에서 로그인 정보 삭제 -> 즉 서버에서 처리
+//근데 spring security에선 쉽게 처리 가능
+// (config폴더에 .logout(auth -> auth
+//                        .logoutUrl("/auth/logout")
+//                        .logoutSuccessHandler((request, response, authentication) -> {
+//                            response.setStatus(200);
+//                        })
+//                )
+
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
