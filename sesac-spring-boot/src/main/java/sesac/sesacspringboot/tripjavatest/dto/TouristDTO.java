@@ -13,6 +13,7 @@ public class TouristDTO {
     private String areacode;
     private String sigungucode;
     private String firstimage;
-    private String mapx;
-    private String mapy;
+    private Double mapx;
+    private Double mapy;
+    private Double distance;
 }

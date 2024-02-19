@@ -43,12 +43,14 @@ public class TouristEntity {
     @Column(name = "overview")
     private String overview;
     */
-
     @Column(name = "mapx")
-    private String mapx;
+    private Double mapx;
 
     @Column(name = "mapy")
-    private String mapy;
+    private Double mapy;
+
+    @Column(name = "distance")
+    private Double distance;
 
     /*
     @Column(name = "cat1")
